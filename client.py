@@ -18,7 +18,7 @@ async def serverTest():
 
             print("Available tools:", [t.name for t in tools])
 
-            call_result = await session.call_tool("read_file", {"path": "path of the test file"})
+            call_result = await session.call_tool("read_file", {"path": "index.html"})
             print("File content:", call_result.content)
 
 

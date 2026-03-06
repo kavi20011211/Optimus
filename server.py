@@ -1,13 +1,15 @@
 import asyncio
 import os
+import sys
+
 from mcp.server import Server, NotificationOptions
 from mcp.server.models import InitializationOptions
 import mcp.server.stdio
 import mcp.types as types
 
-server = Server("your-server-name")
+server = Server("Optimus")
 
-WORKSPACE = "your workspace dir"
+WORKSPACE = "D:\\Work_loads\\company-portfolio\\Project-Portfolio\\"
 
 
 def safe_path(relative_path: str) -> str:
@@ -49,12 +51,13 @@ async def handle_list_tools() -> list[types.Tool]:
         )
     ]
 
+
 @server.call_tool()
-async def handle_call_tool(name:str, arguments: dict)-> list[types.TextContent]:
+async def handle_call_tool(name: str, arguments: dict) -> list[types.TextContent]:
     if name == "read_file":
         path = safe_path(arguments["path"])
         try:
-            with open(path,"r", encoding="utf-8") as f:
+            with open(path, "r", encoding="utf-8") as f:
                 content = f.read()
                 return [types.TextContent(type="text", text=content)]
         except Exception as e:
@@ -74,13 +77,18 @@ async def handle_call_tool(name:str, arguments: dict)-> list[types.TextContent]:
     else:
         raise ValueError(f"Unknown tool: {name}")
 
+
 async def main():
+    print("Optimus MCP server starting... waiting for client", file=sys.stderr)
+
     async with mcp.server.stdio.stdio_server() as (read_stream, write_stream):
+        print("STDIO connection established (client likely connected)", file=sys.stderr)
+
         await server.run(
             read_stream,
             write_stream,
             InitializationOptions(
-                server_name="your-server-name",
+                server_name="Optimus",
                 server_version="1.0.0",
                 capabilities=server.get_capabilities(
                     notification_options=NotificationOptions(),
