@@ -1,3 +1,4 @@
+```text
  ______   ______   _________  ________  ___ __ __   __  __   ______      
 /_____/\ /_____/\ /________/\/_______/\/__//_//_/\ /_/\/_/\ /_____/\     
 \:::_ \ \\:::_ \ \\__.::.__\/\__.::._\/\::\| \| \ \\:\ \:\ \\::::_\/_    
@@ -5,6 +6,7 @@
   \:\ \ \ \\: ___\/   \::\ \    _\::\ \__\:.\-/\  \ \\:\ \:\ \\_::._\:\  
    \:\_\ \ \\ \ \      \::\ \  /__\::\__/\\. \  \  \ \\:\_\:\ \ /____\:\ 
     \_____\/ \_\/       \__\/  \________\/ \__\/ \__\/ \_____\/ \_____\/ 
+```
                                                                          
 
 **Optimus** is a lightweight MCP (Model Context Protocol) server that gives your AI coding assistant direct access to your project files – read, write, and list files securely within your workspace. Built for a seamless "vibe coding" experience in VS Code with clients like **Cline**.
@@ -108,3 +110,4 @@ All file paths are resolved relative to the WORKSPACE environment variable.
 Path traversal attempts (../) are blocked.
 Write operations create parent directories automatically.
 For additional safety, consider running the server with least privilege.
+
