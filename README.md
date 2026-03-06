@@ -76,17 +76,17 @@
   }
 }
 ```
-autoApprove: Tools that can run without manual confirmation (optional but convenient)
-WORKSPACE: The directory to which all file operations are restricted
++ autoApprove: Tools that can run without manual confirmation (optional but convenient)
++ WORKSPACE: The directory to which all file operations are restricted
 
 After saving, restart VS Code or reload Cline. You should see a green indicator for the Optimus server.
 
 ## 🎮 Usage Examples
 
-"Read the index.html file and show me its contents."
-"Create a new file called test.txt with the text 'Hello from Optimus!'"
-"List all files in the src directory."
-"Write a simple React component to components/Button.jsx."
++ "Read the index.html file and show me its contents."
++ "Create a new file called test.txt with the text 'Hello from Optimus!'"
++ "List all files in the src directory."
++ "Write a simple React component to components/Button.jsx."
 
 ## 📁 Project Structure
 ```
@@ -106,9 +106,10 @@ optimus-mcp-server/
 
 ## 🔐 Security Notes
 
-All file paths are resolved relative to the WORKSPACE environment variable.
-Path traversal attempts (../) are blocked.
-Write operations create parent directories automatically.
-For additional safety, consider running the server with least privilege.
++ All file paths are resolved relative to the WORKSPACE environment variable.
++ Path traversal attempts (../) are blocked.
++ Write operations create parent directories automatically.
++ For additional safety, consider running the server with least privilege.
+
 
 
