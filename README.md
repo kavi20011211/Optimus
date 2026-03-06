@@ -67,10 +67,10 @@
       "type": "stdio",
       "command": "python",
       "args": [
-        "D:/Projects/optimus-mcp-server/server.py"   // <-- your full path
+        ".../server.py"   // <-- your full path
       ],
       "env": {
-        "WORKSPACE": "D:/Work_Loads/company-portfolio/Project-Portfolio"  // <-- your project root
+        "WORKSPACE": "..."  // <-- your project root
       }
     }
   }
@@ -110,4 +110,5 @@ All file paths are resolved relative to the WORKSPACE environment variable.
 Path traversal attempts (../) are blocked.
 Write operations create parent directories automatically.
 For additional safety, consider running the server with least privilege.
+
 
