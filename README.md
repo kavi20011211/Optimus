@@ -36,8 +36,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/optimus-mcp-server.git
-   cd optimus-mcp-server
+   git clone https://github.com/kavi20011211/Optimus.git
+   cd Optimus
 
 2. **Create and activate a virtual environment (recommended)**
     ```
@@ -110,6 +110,7 @@ optimus-mcp-server/
 + Path traversal attempts (../) are blocked.
 + Write operations create parent directories automatically.
 + For additional safety, consider running the server with least privilege.
+
 
 
 
