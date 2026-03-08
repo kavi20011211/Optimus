@@ -48,6 +48,19 @@ async def handle_list_tools() -> list[types.Tool]:
                 },
                 "required": ["path", "content"]
             }
+        ),
+
+        types.Tool(
+            name="command_run",
+            description="Run command inside the project directory",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "path": {"type": "string", "description": "Relative path from workspace root"},
+                    "command": {"type": "string", "description": "Command to run"}
+                },
+                "required": ["path", "command"]
+            }
         )
     ]
 
@@ -55,6 +68,7 @@ async def handle_list_tools() -> list[types.Tool]:
 @server.call_tool()
 async def handle_call_tool(name: str, arguments: dict) -> list[types.TextContent]:
     if name == "read_file":
+        print("File read tool selected", file=sys.stderr)
         path = safe_path(arguments["path"])
         try:
             with open(path, "r", encoding="utf-8") as f:
@@ -64,6 +78,7 @@ async def handle_call_tool(name: str, arguments: dict) -> list[types.TextContent
             return [types.TextContent(type="text", text=f"Error reading file: {str(e)}")]
 
     elif name == "write_file":
+        print("File write tool selected", file=sys.stderr)
         path = safe_path(arguments["path"])
         content = arguments["content"]
         try:
@@ -79,11 +94,19 @@ async def handle_call_tool(name: str, arguments: dict) -> list[types.TextContent
 
 
 async def main():
-    print("Optimus MCP server starting... waiting for client", file=sys.stderr)
+
+    print(r"""
+     ______   ______   _________  ________  ___ __ __   __  __   ______      
+    /_____/\ /_____/\ /________/\/_______/\/__//_//_/\ /_/\/_/\ /_____/\     
+    \:::_ \ \\:::_ \ \\__.::.__\/\__.::._\/\::\| \| \ \\:\ \:\ \\::::_\/_    
+     \:\ \ \ \\:(_) \ \  \::\ \     \::\ \  \:.      \ \\:\ \:\ \\:\/___/\   
+      \:\ \ \ \\: ___\/   \::\ \    _\::\ \__\:.\-/\  \ \\:\ \:\ \\_::._\:\  
+       \:\_\ \ \\ \ \      \::\ \  /__\::\__/\\. \  \  \ \\:\_\:\ \ /____\:\ 
+        \_____\/ \_\/       \__\/  \________\/ \__\/ \__\/ \_____\/ \_____\/ 
+        Optimus MCP server | @brightseid | v.0.0.1
+    """, file=sys.stderr)
 
     async with mcp.server.stdio.stdio_server() as (read_stream, write_stream):
-        print("STDIO connection established (client likely connected)", file=sys.stderr)
-
         await server.run(
             read_stream,
             write_stream,
