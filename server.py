@@ -1,5 +1,6 @@
 import asyncio
 import os
+import subprocess
 import sys
 
 from mcp.server import Server, NotificationOptions
@@ -7,9 +8,13 @@ from mcp.server.models import InitializationOptions
 import mcp.server.stdio
 import mcp.types as types
 
+import load_config
+
 server = Server("Optimus")
 
-WORKSPACE = "D:\\Work_loads\\company-portfolio\\Project-Portfolio\\"
+config = load_config.load_json_data()
+
+WORKSPACE = config["workdir"]
 
 
 def safe_path(relative_path: str) -> str:
@@ -89,12 +94,22 @@ async def handle_call_tool(name: str, arguments: dict) -> list[types.TextContent
         except Exception as e:
             return [types.TextContent(type="text", text=f"Error writing file: {str(e)}")]
 
+    elif name == "command_run":
+        result = subprocess.run(
+            arguments["command"],
+            shell=not config["safe"],
+            cwd=safe_path(arguments["path"]),
+            capture_output=True,
+            text=True
+        )
+        output = result.stdout + result.stderr
+        return [types.TextContent(type="text", text=output)]
+
     else:
         raise ValueError(f"Unknown tool: {name}")
 
 
 async def main():
-
     print(r"""
      ______   ______   _________  ________  ___ __ __   __  __   ______      
     /_____/\ /_____/\ /________/\/_______/\/__//_//_/\ /_/\/_/\ /_____/\     
@@ -103,7 +118,7 @@ async def main():
       \:\ \ \ \\: ___\/   \::\ \    _\::\ \__\:.\-/\  \ \\:\ \:\ \\_::._\:\  
        \:\_\ \ \\ \ \      \::\ \  /__\::\__/\\. \  \  \ \\:\_\:\ \ /____\:\ 
         \_____\/ \_\/       \__\/  \________\/ \__\/ \__\/ \_____\/ \_____\/ 
-        Optimus MCP server | @brightseid | v.0.0.1
+        Optimus MCP server | @brightseid | v0.0.1
     """, file=sys.stderr)
 
     async with mcp.server.stdio.stdio_server() as (read_stream, write_stream):
