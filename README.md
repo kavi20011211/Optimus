@@ -136,7 +136,7 @@ optimus-mcp-server/
 
 <img width="1920" height="1080" alt="evidence2" src="https://github.com/user-attachments/assets/dc9e0ef5-9299-471e-9e8f-99d901e28113" />
 
-<img width="1920" height="1080" alt="evidence2" src="[https://github.com/user-attachments/assets/dc9e0ef5-9299-471e-9e8f-99d901e28113](https://raw.githubusercontent.com/kavi20011211/Optimus/refs/heads/main/test/evidence3.PNG)" />
+<img width="1920" height="1080" alt="evidence3" src="[https://github.com/user-attachments/assets/dc9e0ef5-9299-471e-9e8f-99d901e28113](https://raw.githubusercontent.com/kavi20011211/Optimus/refs/heads/main/test/evidence3.PNG)" />
 
 ## 🔐 Security Notes
 
