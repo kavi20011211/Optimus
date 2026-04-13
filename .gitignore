@@ -1,3 +1,4 @@
+
 # Python-generated files
 __pycache__/
 .idea
@@ -10,3 +11,7 @@ setup.json
 
 # Virtual environments
 .venv
+
+client/node_modules/
+client/build/
+client/.env
