@@ -21,6 +21,8 @@
 - 🔒 **Path validation** – All file operations are confined to your workspace directory (prevents accidental system access).
 - ⚡ **Auto‑approve ready** – Configure tools to run without manual confirmation (optional).
 - 🧩 **MCP compliant** – Works with any MCP client (Cline, Continue, Claude Desktop, etc.).
+- 🌐 **Global installation** - Install, Setup and Run on anywhere.
+- 💻 **Client-Server integration** - Can run with client interface.
 
 ---
 
@@ -106,6 +108,12 @@ After saving, restart VS Code or reload Cline. You should see a green indicator 
    npm run build
    npm run dev
 
+## For global installation and uninstall
+  ```
+pip install -e .
+pip uninstall optimus
+```
+
 ## 🎮 Usage Examples
 
 + "Read the index.html file and show me its contents."
@@ -118,6 +126,9 @@ After saving, restart VS Code or reload Cline. You should see a green indicator 
 ```
 optimus-mcp-server/
 ├── server.py          # Main MCP server implementation
+├── cli/
+      ├── __init__.py
+      ├── cli.py       # CLI interface and options
 ├── client.py          # Optional test client
 ├──client/
       ├──index.ts      # Main MCP client implementation
@@ -127,6 +138,7 @@ optimus-mcp-server/
       ├──tsconfig.json # TS configs
 ├── requirements.txt   # Dependencies (mcp)
 ├── README.md          # This file
+├── pyproject.toml
 └── .gitignore
 ```
 
