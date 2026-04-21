@@ -29,6 +29,7 @@
 - Python **3.8+**
 - [MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk)
 - VS Code with an MCP client extension (e.g., **Cline**)
+- Node **22.20.0** (Read the MCP client official documentation)
 
 ---
 
@@ -81,18 +82,49 @@
 
 After saving, restart VS Code or reload Cline. You should see a green indicator for the Optimus server.
 
+5. **Setup the client MCP**
+   ```
+   cd client
+   npm install
+
+6. **Configure the setup file (setup.json)**
+   ```
+   {
+   "assistant-name": "opt/1",
+   "version": "v0.0.1",
+   "workdir": "project path",
+   "safe": safe //set true if you don't want to run critical commands in the cmd
+   }
+  
+7. **Verify the client**
+   ```
+   cd client
+   echo API_KEY=your_api_key > .env
+   (I have used open router API key so you can also run an API key using it)
+
+   cd client
+   npm run build
+   npm run dev
+
 ## 🎮 Usage Examples
 
 + "Read the index.html file and show me its contents."
 + "Create a new file called test.txt with the text 'Hello from Optimus!'"
 + "List all files in the src directory."
 + "Write a simple React component to components/Button.jsx."
++ You can run this using the MCP client as well.
 
 ## 📁 Project Structure
 ```
 optimus-mcp-server/
 ├── server.py          # Main MCP server implementation
 ├── client.py          # Optional test client
+├──client/
+      ├──index.ts      # Main MCP client implementation
+      ├──mcpClient.ts  # MCP Client class implementation
+      ├──package.json  
+      ├──package-lock.json
+      ├──tsconfig.json # TS configs
 ├── requirements.txt   # Dependencies (mcp)
 ├── README.md          # This file
 └── .gitignore
@@ -103,6 +135,8 @@ optimus-mcp-server/
 <img width="1920" height="1080" alt="evidence1" src="https://github.com/user-attachments/assets/137f6b58-b1b9-4614-9ec8-790828d79469" />
 
 <img width="1920" height="1080" alt="evidence2" src="https://github.com/user-attachments/assets/dc9e0ef5-9299-471e-9e8f-99d901e28113" />
+
+<img width="1920" height="1080" alt="evidence3" src="[https://github.com/user-attachments/assets/dc9e0ef5-9299-471e-9e8f-99d901e28113](https://raw.githubusercontent.com/kavi20011211/Optimus/refs/heads/main/test/evidence3.PNG)" />
 
 ## 🔐 Security Notes
 
