@@ -150,6 +150,8 @@ optimus-mcp-server/
 
 <img width="1920" height="1080" alt="evidence3" src="[https://github.com/user-attachments/assets/dc9e0ef5-9299-471e-9e8f-99d901e28113](https://raw.githubusercontent.com/kavi20011211/Optimus/refs/heads/main/test/evidence3.PNG)" />
 
+[Optimus generated README.md file of his capabilities][test/README.md]
+
 ## 🔐 Security Notes
 
 + All file paths are resolved relative to the WORKSPACE environment variable.
